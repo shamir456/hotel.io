@@ -1,0 +1,10 @@
+.mat-tab-label ,.mat-tab-label-content {
+    display: inline-flex;
+    font-size: 23px;
+    color: black
+    
+}
+
+.mat-form-field{
+    max-height: 60px;
+}

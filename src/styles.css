@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+body{
+    background: url("../src/assets/luxury-hotel-1600x900-sunset-swimming-pool-water-suite-4k-5172.jpg") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
