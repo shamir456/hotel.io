@@ -29,9 +29,8 @@ import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { BookingComponent } from './booking/booking.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HotelsListComponent } from './hotels-list/hotels-list.component';
-import { TableComponent } from './table/table.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
-import { XyzComponent } from './xyz/xyz.component';
+
 
 
 
@@ -43,7 +42,7 @@ import { XyzComponent } from './xyz/xyz.component';
     HomeComponent,
     NavComponent,
     MyaccountComponent,
-    XyzComponent,
+
     
     
     BookingComponent,
@@ -51,7 +50,6 @@ import { XyzComponent } from './xyz/xyz.component';
     
     HotelsListComponent,
     DataFilterPipe,
-    TableComponent,
     HotelDetailComponent
    
     

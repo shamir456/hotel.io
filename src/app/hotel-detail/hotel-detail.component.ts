@@ -19,11 +19,11 @@ import { toInteger, isNumber, padNumber } from '@ng-bootstrap/ng-bootstrap/util/
 export class HotelDetailComponent implements OnInit {
 
   private hotelId:number;
-  private hotel:Hotel= new Hotel();
+   hotel:Hotel= new Hotel();
   private serverPath = AppConst.serverPath;
-  private roomList : any =[];
-  private no_of_delux_available:number=0;
-  private no_of_economical_available:number=0; 
+   roomList : any =[];
+   no_of_delux_available:number=0;
+   no_of_economical_available:number=0; 
   
   public selected_delux_no:number;
   public selected_econo_no:number;
@@ -33,17 +33,17 @@ export class HotelDetailComponent implements OnInit {
   public deluxe_selection_error=false;
   public economic_selection_error=false;
   public loginService=false;
-  private user:User;
+   user:User;
   
   completeform=true;
-  private roomarr:any=[];
-  public today= new Date();
-  private bill:number;
+   roomarr:any=[];
+   today= new Date();
+   bill:number;
   public booking_id:any;
   constructor(
-    private bookingService:BookingService,
-    private hotelService:HotelService,
-    private userService:UserService,
+    public bookingService:BookingService,
+    public hotelService:HotelService,
+    public userService:UserService,
     private router: Router,
     private http:Http,
     private route :ActivatedRoute) {}

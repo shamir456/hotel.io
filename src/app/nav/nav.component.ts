@@ -8,9 +8,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  private loggedin=false;
+  public loggedin=false;
 
-   constructor( private loginService: LoginService  , private router: Router) {  }
+   constructor( public loginService: LoginService  , private router: Router) {  }
 
 
    logout() {

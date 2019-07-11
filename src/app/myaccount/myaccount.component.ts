@@ -15,25 +15,25 @@ import { httpFactory } from '@angular/http/src/http_module';
 export class MyaccountComponent implements OnInit {
 
   private serverPath = AppConst.serverPath;
-  private loginError:boolean = false;
-  private loggedIn = false;
-  private credential = {'username':'', 'password':''};
-  public name="moiz";
+   loginError:boolean = false;
+   loggedIn = false;
+   credential = {'username':'', 'password':''};
+   name="moiz";
 
-  private emailSent: boolean =false;
-  private usernameExists:boolean;
-  private emailExists:boolean;
-  private username:string;                                                         
-  private email:string;
+   emailSent: boolean =false;
+   usernameExists:boolean;
+   emailExists:boolean;
+   username:string;                                                         
+   email:string;
 
-  private emailNotExists: boolean =false;
-  private forgetPasswordEmailSent: boolean;
-  private recoverEmail:string;  
+   emailNotExists: boolean =false;
+   forgetPasswordEmailSent: boolean;
+   recoverEmail:string;  
   
 
   constructor(
-  	private loginService: LoginService,
-  	private userService: UserService,
+  	public loginService: LoginService,
+  	public userService: UserService,
   	private router: Router
 	) { }
 	  

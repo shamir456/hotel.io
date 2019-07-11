@@ -23,15 +23,15 @@ export class HotelsListComponent implements OnInit {
   public filterQuery="";
   public rowsOnpage=5;
  
-  private selectedHotel:Hotel;
-  private hotelList: any=[];
+   selectedHotel:Hotel;
+   hotelList: any=[];
   private serverPath= AppConst.serverPath;
   
 
 
 
   constructor(
-    private hotelService:HotelService,
+    public hotelService:HotelService,
     private router:Router,
     private http:Http,
     private route:ActivatedRoute,
