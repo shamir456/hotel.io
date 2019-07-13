@@ -1,30 +1,73 @@
-<div class="back">
-		<table id="myTable">
-				
-				<tr  *ngFor = "let data of hotelList">
-						<td>		  
-						<div id="one" style="padding:10px;">
-						<div id= "two" class= "horizontal_card">
-							<img src="{{data.img}}" >
-							
-							<div id=data class="side_block">
+<!-- <div class="back">
+	<table id="myTable">
+
+		<tr *ngFor="let data of hotelList">
+			<td>
+				<div id="one" style="padding:10px;">
+					<div id="two" class="horizontal_card">
+						<img src="{{data.img}}">
+
+						<div id=data class="side_block">
 							<h1 id="a">{{data.hotelname}}</h1>
 							<h3>{{data.location}}</h3>
 							<div>
-								
-							<p>A wonderful serenity has taken possession oof spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</p>
+
+								<p>A wonderful serenity has taken possession oof spring which I enjoy with my whole
+									heart. I am alone, and feel the charm of existence in this spot, which was created
+									for the bliss of souls like mine.</p>
 							</div>
-							<ngb-rating rate="{{data.rating}}" ></ngb-rating>
-							
-							<button style="margin-left: 375px; margin-top: -20px;" mat-raised-button color="accent" (click)="onSelect(data) "> BOOK NOW </button>
-							</div>	
+							<ngb-rating rate="{{data.rating}}"></ngb-rating>
+
+							<button style="margin-left: 375px; margin-top: -20px;" mat-raised-button color="accent"
+								(click)="onSelect(data) "> BOOK NOW </button>
 						</div>
-						</div>
-						</td>
+					</div>
+				</div>
+			</td>
+
+		</tr>
+
+	</table>
+</div> -->
+
+<div style="margin-top:20px;padding:10px">
+	<mat-card class="example-card" *ngFor="let data of hotelList">
+		<mat-card-header>
+				<mat-card-title-group>
+						<img mat-card-lg-image		style="padding: 10px"src="{{data.img}}"  alt="Photo of a Shiba Inu">
+					<mat-card-title>{{data.hotelname}}</mat-card-title>
+					<mat-card-subtitle>{{data.location}}</mat-card-subtitle>
 				
-</tr>
-				
-</table>
+			
+			</mat-card-title-group>
+			<div style="padding: 10px">
+					<ngb-rating [(rate)]="data.rating" [readonly]="!readonly">
+						<ng-template let-fill="fill" let-index="index">
+							<span class="star" [class.filled]="fill === 100">&#9733;</span>
+						</ng-template>
+					</ngb-rating>
+	
+				</div>
+
+			
+		</mat-card-header>
+		<div fxFlex="10px" fxFlexAlign="center">
+		<mat-card-content >
+			<p>
+				The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+				A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+				bred for hunting.
+			</p>
+
+		</mat-card-content>
+	</div>
+		<mat-card-actions>
+			<button mat-raised-button (click)="onSelect(data)" color="primary"> BOOK NOW</button>
+			<button mat-raised-button  (click)="readonly = !readonly">RATE</button>
+		</mat-card-actions>
+	
+	</mat-card>
+
 </div>
 
 
@@ -58,9 +101,7 @@
 
 
 
-
-
-	<!-- <div class="row">
+<!-- <div class="row">
     	<div class="col-md-3"></div>
     	<div class="col-md-9">
     		<table class="table" [mfData]="bookList | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
@@ -118,4 +159,3 @@
     	</div>
     </div>
  -->
-

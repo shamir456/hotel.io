@@ -1,6 +1,6 @@
 .back{
     
-    background: no-repeat center center fixed; 
+  background: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -48,10 +48,30 @@
 
 
 
-img{
-  width: 300px;
-  height: 160px;
-  border-radius: 5px;
+
+
+
+
+.example-card {
+  max-height: 350px;
+  justify-content: center
   
-  box-shadow: 1px 1px 1px 1px #888888;
 }
+
+
+
+
+
+    .star {
+      font-size: 2.5rem;
+      color: #b0c4de;
+    }
+    .filled {
+      color: #1e90ff;
+    }
+    .bad {
+      color: #deb0b0;
+    }
+    .filled.bad {
+      color: #ff1e1e;
+    }

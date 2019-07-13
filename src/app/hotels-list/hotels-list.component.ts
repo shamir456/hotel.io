@@ -39,7 +39,7 @@ export class HotelsListComponent implements OnInit {
   ) {
     
     config.max=5;
-    config.readonly=true;
+    
     
     
 
@@ -51,6 +51,12 @@ export class HotelsListComponent implements OnInit {
     console.log(hotel);
     
     this.router.navigate(['/hotelDetail',this.selectedHotel.id]);
+  }
+
+  onRate(hotel:Hotel)
+  {
+    this.selectedHotel=hotel;
+
   }
 
 
@@ -87,7 +93,7 @@ export class HotelsListComponent implements OnInit {
                console.log("my id");
                
                console.log(this.hotelList);
-               (document.getElementById('myTable') as HTMLTableElement).id = this.hotelList;
+               //(document.getElementById('myTable') as HTMLTableElement).id = this.hotelList;
              },
              err =>{
               console.log(err);
