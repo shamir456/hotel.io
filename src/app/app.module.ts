@@ -43,16 +43,16 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
     NavComponent,
     MyaccountComponent,
 
-    
-    
+
+
     BookingComponent,
     MyProfileComponent,
-    
+
     HotelsListComponent,
     DataFilterPipe,
     HotelDetailComponent
-   
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -70,20 +70,20 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
     DataTablesModule,
     MatDatepickerModule,
     MatNativeDateModule
-    
-    
-    
-    
-    
+
+
+
+
+
   ],
   providers: [
     LoginService,
     UserService,
     HotelService,
     BookingService,
-    
-    
-    
+
+
+
   ],
   bootstrap: [AppComponent]
 })

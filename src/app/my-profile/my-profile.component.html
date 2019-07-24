@@ -1,103 +1,83 @@
-<div class="back">
-  
-  <div *ngIf="!dataFetched" style="margin-left:600px;">
-    <mat-spinner class="circle"></mat-spinner>
-    <label style="margin-left:2px; margin-top: 10px;">Fetching Data</label>
+<div class="card" style="width: 70%; margin-left: 15%; margin-top: 1%; padding: 1%;">
+  <div class="card-title">
+    <h3>Account Settings</h3>
+    <hr>
+    <div *ngIf="!dataFetched" class="loader" style="margin-top: 20%; ">Loading...</div>
   </div>
-
-  <div *ngIf="dataFetched">
-    
-    
-  
-
-    <mat-tab-group [selectedIndex]="selectedProfileTab" style=" margin-left:60px; width: 1000px; border-style: solid;
-    border-width: 1.5px; border-radius: 5px">
-      <mat-tab label="Edit">
-        <div *ngIf="incorrectPassword" class="alert alert-danger" style="margin:20px;">
-          <strong>Incorrect password!</strong> Please enter the correct password for currunt user.
+<div *ngIf="dataFetched" style="margin-top:-10px;">
+  <form (ngSubmit)="onUpdateUserInfo()">
+      <input type="hidden" name="id" [(ngModel)]="user.id">
+      <div class="form-group">
+        <div class="row" style="width:900px;">
+          <div style="padding: 20px; font-size:15px;"   >
+            <label for="firstName" >First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" />
+          </div>
+          <div style="margin-left: 50px; padding: 20px; font-size:15px;"   >
+            <label for="Lastname" >Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" />
+          </div>
         </div>
-
-        <div *ngIf="updateSuccess" class="alert alert-success" style="margin:20px;">
-          <strong>Success!</strong> Indicates a successful or positive action.
-        </div>
-
-
-        <form (ngSubmit)="onUpdateUserInfo()">
-          <input type="hidden" name="id" [(ngModel)]="user.id">
-          <div class="bg-info" *ngIf="updateUserInfo">User info updated</div>
-          <div class="form-group">
-            <div class="row" style="width:900px;">
-              <div style="padding: 20px; font-size:15px;"   >
-                <label for="firstName" >First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" />
-              </div>
-              <div style="margin-left: 50px; padding: 20px; font-size:15px;"   >
-                <label for="Lastname" >Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group" style=" padding-left: 24px; font-size:15px;">
-            <label for="username">
-              Username *
-            </label>&nbsp;<span *ngIf="usernameExists" style="color:red">Username already exists. Choose a different one.</span>
-            <input required="required" type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" />	
-          </div>
+      </div>
+      <div class="form-group" style=" padding-left: 24px; font-size:15px;">
+        <label for="username">
+          Username *
+        </label>&nbsp;<span class="alert-danger" *ngIf="usernameExists">Username already exists. Choose a different one.</span>
+        <input required="required" type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" />
+      </div>
 
 
-          <div class="form-group">
-            <label for="currentPassword">
-              Current Password
-            </label>
-            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="currentPassword" />	
-            <p style="color:#828282;">Enter your current password to change the E-mail address or Password.</p>
-          </div>
+      <div class="form-group">
+        <label for="currentPassword">
+          Current Password
+        </label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="currentPassword" />
+        <span class="alert-danger" *ngIf="incorrectPassword">Incorrect Password</span>
 
-          <div class="form-group">
-            <label for="email">
-              Email Address *
-            </label>&nbsp;<span *ngIf="emailExists" style="color:red">Email already exists. Choose a different one.</span>
-            <input required="required" type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" />
-            <p style="color:#828282;">A valid e-mail address. All e-mails from the system will be sent to this address.</p>	
-          </div>
+        <p style="color:#828282; font-size: 12px;">Enter your current password to change the E-mail address or Password.</p>
+      </div>
 
-          <div class="form-group">
-            <label for="txtNewPassword">
-              New Password *
-            </label>&nbsp;<span id="checkPasswordMatch" style="color:red;"></span>
-            <input type="password" class="form-control" id="txtNewPassword" name="txtNewPassword" [(ngModel)]="newPassword" />
-          </div>
+      <div class="form-group">
+        <label for="email">
+          Email Address *
+        </label>&nbsp;<span *ngIf="emailexists" style="color:red">Email already exists. Choose a different one.</span>
+        <input required="required" type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" />
+        <p style="color:#828282; font-size: 12px;">A valid e-mail address. All e-mails from the system will be sent to this address.</p>
+      </div>
 
-          <div class="form-group">
-            <label for="txtConfirmPassword">
-              Confirm New Password *
-            </label>
-            <input type="password" class="form-control" id="txtConfirmPassword" name="txtNewPassword"  />
-          </div>
-          <button style="margin-left:900px; margin-bottom: 10px; " mat-raised-button type="submit" class="mat-primary" id="udpateuserInfoButton">Save</button>
-
-        </form>
-
-      </mat-tab>
-      
-    </mat-tab-group>
-    
+      <div class="row" style="padding-left: 13px;">
+      <div class="form-group col-sm-4">
+        <label for="txtNewPassword">
+          New Password *
+        </label>&nbsp;<span id="checkPasswordMatch" style="color:red;"></span>
+        <input type="password" class="form-control" id="txtNewPassword" name="txtNewPassword" [(ngModel)]="newPassword" />
+      </div>
 
 
+      <div class="form-group col-sm-4" style="padding-left: 50px;">
+        <label for="txtConfirmPassword">
+          Confirm New Password *
+        </label>
+        <span *ngIf="passwordmismatch" style="color:red">Password mismatch</span>
+
+        <input type="password" class="form-control" id="txtConfirmPassword" name="txtNewPassword" [(ngModel)]="confirmpassword" />
+      </div>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="emptyform">
+          Please fill all the feilds
+      </div>
+
+      <div class="alert alert-success" role="alert" *ngIf="updateSuccess">
+          Your account settings have been updated.
+      </div>
+
+      <button *ngIf="!loading" class="btn btn-info" style="width: 40%; margin-left: 30%; margin-top: 30px; font-size: 12px;" type="submit"  id="udpateuserInfoButton">Update</button>
+
+      <div *ngIf="loading" class="loader" style="margin-top: 5px;">Loading...</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    </form>
+  </div>
 
 
 

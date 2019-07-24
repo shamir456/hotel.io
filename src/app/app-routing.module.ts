@@ -9,9 +9,9 @@ import {HotelDetailComponent} from '../app/hotel-detail/hotel-detail.component';
 
 
 const routes: Routes = [
-  {path:'',    component: HomeComponent },
+  {path:'home',    component: HomeComponent },
   {path: 'account', component: MyaccountComponent},
-  
+
   {path: 'myProfile' , component:MyProfileComponent},
   {path : 'hotelList' , component:HotelsListComponent},
   {path : 'hotelDetail/:id' , component:HotelDetailComponent}

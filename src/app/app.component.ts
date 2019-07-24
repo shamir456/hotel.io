@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,16 @@ export class AppComponent {
   login=false;
   title = 'front';
 
+  constructor(private router: Router){
+    this.router.navigate(['/home']);
+  }
+
   toggle(){
     this.login=!this.login;
   }
 }
+
+
 
 var modal = document.getElementById('id01');
 

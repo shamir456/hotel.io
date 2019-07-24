@@ -1,94 +1,124 @@
-<div style="opacity: 0.9; border-radius: 5px ; padding:10px; background-color: white; height: 600px; width: 1200px; margin-left: 23%; margin-top: 50px; ">
-  <mat-tab-group style="font-size:20px;" >
-  <mat-tab label="Login"  > 
-    <div style="padding:50px; ">  
-      <div *ngIf="loginError" style="color:red">
-        Incorrect username or password
-      </div>
-      <form (ngSubmit)="onlogin()" class="example-form">
-        <div >
-          <mat-form-field class="example-full-width"  style="height:100px; width: 350px;">
-           <input matInput type="text" id="username" name="username" [(ngModel)]="credential.username" required="required" placeholder="username" style="height: 20px;  font-size: 20px;" >
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field class="example-full-width" style="height:100px; width: 350px;">
-              <input matInput type="password" id="password" name="password" [(ngModel)]="credential.password" required="required" placeholder="Password" style="height: 20px;  font-size: 20px;" >
-          </mat-form-field>
-        </div>
-        <button mat-raised-button color="primary" type="submit" style="height:40px; font-size:30px; margin-top: 250px;"> Login</button>
-        </form>
-      </div>
-     
-  </mat-tab>
-  <mat-tab label="Signup"> 
-    <div style="padding:50px; ">  
-          <div *ngIf="emailSent" style="color:red">
-            An Email has been sent to your Email adress you just registered
-          </div>
-          <form (ngSubmit)="onNewAccount()" class="example-form">
-            <div >
-              
-              <mat-form-field class="example-full-width"  style="height:100px; width: 350px;">
-               <input matInput type="text" id="newUsername" name="Username" [(ngModel)]="username" required="required" placeholder="enter username" style="height: 20px;  font-size: 20px;" >
-              </mat-form-field>
-              <span *ngIf="usernameExists" style="color:red; font-size: 15px;">username already exist, Use a different one</span>
-            </div>
-            <div>
-              <mat-form-field class="example-full-width" style="height:100px; width: 350px;">
-                  <input matInput type="email" id="email" name="email" [(ngModel)]="email" required="required" placeholder="Email" style="height: 20px;  font-size: 20px;" >
-              </mat-form-field>
-              <span *ngIf="emailExists" style="color:red; font-size: 15px;">Email already exist, Login !</span>
-            </div>
-            <div class="alert alert-success"  *ngIf="emailSent">
-                <strong>Email Sent!</strong> Please validate your email address and update your password info.
-              </div>
 
-            <button mat-raised-button color="primary" type="submit" style="height:40px; font-size:30px;  margin-top: 80px;"> register</button>
-            </form>
+<div class="text-center" style="padding:50px 0" style="font-size:14px;" *ngIf="L_IN">
+	<div class="logo">Login</div>
+	<!-- Main Form -->
+	<div class="login-form-1" style="min-width: 30%; min-height: 100%; -webkit-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  -moz-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);  ">
+		<form id="login-form" (ngSubmit)="onlogin()" class="text-left">
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="lg_username" class="sr-only">Username</label>
+						<input type="text" class="form-control" id="lg_username" name="username" [(ngModel)]="credential.username" required="required" placeholder="username" style="font-size: 14px;">
+					</div>
+					<div class="form-group">
+						<label for="lg_password" class="sr-only">Password</label>
+						<input type="password" class="form-control" id="lg_password" name="password" [(ngModel)]="credential.password" required="required" placeholder="Password" style="font-size: 14px;">
           </div>
-</mat-tab>
-  <mat-tab label="Forget Password">
-    
-      <div style="padding:50px; ">  
-          <div *ngIf="emailNotExists" style="color:red">
-            Email not found. Please Signup.
+          <div *ngIf="loginError" class="alert alert-danger" role="alert">
+            Invalid Email or Password
           </div>
-          <form (ngSubmit)="onForgetPassword()" class="example-form">
-            <div >
-              <mat-form-field class="example-full-width"  style="height:100px; width: 350px;">
-               <input matInput type="email" id="recoverEmail" name="recoverEmail" [(ngModel)]="recoverEmail" required="required" placeholder="Email" style="height: 20px;  font-size: 20px;" >
-              </mat-form-field>
-              <p>Enter your registered email adress.</p>
-                <div class="alert alert-success"  *ngIf="forgetPasswordEmailSent">
-                  <strong>Email Sent!</strong> Check your Email.
-                </div>
 
-            </div>
-            <button mat-raised-button color="primary" type="submit" style="height:40px; font-size:30px;  margin-top: 80px;">Submit</button>
-          </form>
-      </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </mat-tab>
-</mat-tab-group>
+					<div class="form-group login-group-checkbox"></div>
+				</div>
+        <button type="submit" class="login-button" style="border-color: darkgray;" ><i class="fa fa-chevron-right"></i></button>
+			</div>
+			<div class="etc-login-form">
+				<p>forgot your password? <button class="btn btn-dark" (click)="forgetpassclick()">Click here</button></p>
+				<p>new user? <button class="btn btn-outline-success" (click)="signupclick()" >Signup</button></p>
+			</div>
+    </form>
+    <div *ngIf="loading">
+    <img   src="../../assets/Dual Ring-1s-200px.svg" width="80px">
+    </div>
+	</div>
+	<!-- end:Main Form -->
 </div>
+
+<!-- REGISTRATION FORM -->
+<div class="text-center" style="padding:50px 0" style="font-size:14px;" *ngIf="S_UP">
+	<div class="logo">register</div>
+	<!-- Main Form -->
+	<div class="login-form-1" style="min-width: 30%; min-height: 100%; -webkit-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  -moz-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);  " >
+		<form id="register-form" (ngSubmit)="onNewAccount()" class="text-left">
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="reg_username" class="sr-only">Email address</label>
+						<input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required="required" placeholder="username" style="font-size: 14px;">
+          </div>
+          <div *ngIf="usernameExists" class="alert alert-danger" role="alert">
+            Username already taken! try a new one.
+          </div>
+					<div class="form-group">
+						<label for="reg_email" class="sr-only">Email</label>
+						<input type="text" class="form-control" id="reg_email" name="email" [(ngModel)]="email" required="required" placeholder="Email" style="font-size: 14px;">
+          </div>
+          <div *ngIf="emailExists" class="alert alert-danger" role="alert">
+            Email already exits! try a new one.
+          </div>
+					</div>
+				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+			</div>
+			<div class="etc-login-form">
+				<p>already have an account? <button class="btn btn-success" (click)="loginclick()" >Login</button></p>
+      </div>
+      <div *ngIf="loading">
+        <img   src="../../assets/Dual Ring-1s-200px.svg" width="80px">
+      </div>
+      <div class="alert alert-success"  *ngIf="emailSent">
+        <strong>Email Sent!</strong> Please validate your email address and update your password info.
+      </div>
+
+		</form>
+	</div>
+	<!-- end:Main Form -->
+</div>
+
+<!-- FORGOT PASSWORD FORM -->
+<div class="text-center" style="padding:50px 0" style="font-size:14px;" *ngIf="F_PASS">
+	<div class="logo">forgot password</div>
+	<!-- Main Form -->
+	<div class="login-form-1" style="min-width: 30%; min-height: 100%; -webkit-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  -moz-box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);
+  box-shadow: 10px 6px 38px -26px rgba(0,0,0,1);  ">
+		<form id="forgot-password-form" (ngSubmit)="onForgetPassword()" class="text-left">
+			<div class="etc-login-form">
+				<p>When you fill in your registered email address, you will be sent instructions on how to reset your password.</p>
+			</div>
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="fp_email" class="sr-only">Email address</label>
+            <input type="text" class="form-control" id="fp_email" name="recoverEmail" [(ngModel)]="recoverEmail" required="required" placeholder="Email" style="font-size: 14px;">
+            <hr>
+					</div>
+				</div>
+				<button type="submit" class="login-button" style="border-color: darkgray;" ><i class="fa fa-chevron-right" ></i></button>
+			</div>
+			<div class="etc-login-form">
+				<p>already have an account? <button class="btn btn-success" (click)="loginclick()" >Login</button></p>
+				<p>new user? <button class="btn btn-outline-success" (click)="signupclick()" >Signup</button></p>
+      </div>
+      <div *ngIf="loading">
+        <img   src="../../assets/Dual Ring-1s-200px.svg" width="80px">
+      </div>
+      <div class="alert alert-success"  *ngIf="forgetPasswordEmailSent">
+        <strong>Email Sent!</strong> Please validate your email address and update your password info.
+      </div>
+      <div class="alert alert-danger"  *ngIf="emailNotExists">
+        <strong>Email Not Exist!</strong> Please enter valid email address.
+      </div>
+		</form>
+	</div>
+	<!-- end:Main Form -->
+</div>
+
+
+

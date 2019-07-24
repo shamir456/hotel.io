@@ -1,85 +1,33 @@
-.back{
-    
-  background: no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: white ;
-  opacity: 1;
-  margin:20px;
-  width: 1200px;
-  
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 1px 1px 8px 1px #888888;
 
-}
-#myInput {
-  /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-  width: 20%;
-    font-size: 12px;
-    padding: 10px;
-    border: 1px solid #212529;
-    border-radius: 80px;
-    margin-bottom: 12px;
-}
-
-.horizontal_card{
-  background:lightblue;
-  border-radius: 8px;
-  width:800px;
-  height: 160px;
-  box-shadow: 2px 2px 3px 1px #888888;
-}
-
-.side_block{
-  margin-left: 310px;
-  margin-top: -140px;
-}
-
-
-
-
-
-
-
-
-.example-card {
-  max-height: 350px;
-  
-}
-
-
-
-
-
-.mat-card-lg-image{
-  width: 40%;
-
-}
-.mat-card-title-group {
-  display: flex;
-  justify-content: left;
-}
-
-    .star {
-      font-size: 2.5rem;
-      color: #b0c4de;
+    .fadedfx {
+      background-color: #fe5652;
+      visibility: hidden;
     }
-    .filled {
-      color: #1e90ff;
+
+    .fadeIn {
+      animation-name: fadeIn;
+      -webkit-animation-name: fadeIn;
+      animation-duration: 1.5s;
+      -webkit-animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      -webkit-animation-timing-function: ease-in-out;
+      visibility: visible !important;
     }
-    .bad {
-      color: #deb0b0;
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0.0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
-    .filled.bad {
-      color: #ff1e1e;
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0.0;
+      }
+      100% {
+        opacity: 1;
+      }
     }

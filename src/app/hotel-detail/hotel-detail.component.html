@@ -1,21 +1,56 @@
-<div class="back">
-    
+
+
+
+
+
+
+  <div clss="row" style="width: 50%; margin-left: 30px; margin-top: 5%;">
+    <div class="card col-sm-6" >
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 16px;">Deluxe Rooms</h5>
+          <p class="card-text" style="font-size: 14px;">The Super deluxe hotel room is finely decorated for your luxurious stay and contains all basic amenities such as Color LCD with Cable, Large windows for the perfect valley views, cozy double bed with quality material, Resting chair, and Dressing mirror.</p>
+          <a class="btn btn-outline-danger" style="font-size: 14px; ">{{Deluxe_price}} Rs/Day</a>
+        </div>
+    </div>
+    <div class="card col-sm-6" >
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 16px;">Economic Rooms</h5>
+          <p class="card-text" style="font-size: 14px;">The Super deluxe hotel room is finely decorated for your luxurious stay and contains all basic amenities such as Color LCD with Cable, Large windows for the perfect valley views, cozy double bed with quality material, Resting chair, and Dressing mirror.</p>
+          <a class="btn btn-outline-danger" style="font-size: 14px; ">{{economic_price}} Rs/Day</a>
+        </div>
+    </div>
+    <button class="btn btn-primary " style="font-size: 30px; margin-left: 30% ; min-width: 40%; margin-top: 30px;" onclick="document.getElementById('id02').style.display='block'">book now</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="back animate  " id="id02" style="width: 40%; display: none; transition: 0.1s; margin-left: 55% ; margin-top: -25%; padding: 20px;" >
+
     <div>
       <h4>Available Deluxe Rooms = {{no_of_delux_available}} </h4>
       <h4>Available Economical Rooms = {{no_of_economical_available}} </h4>
     </div>
+    <hr>
 
 
     <form (ngSubmit)="doneBooking()">
-    <div class="row" style="padding:20px;">
-    <label for="delux">Enter no of Deluxe Room :</label>
+    <div class="row" style="padding:10px;">
+    <label for="delux" style="margin-left: 10px;">Enter no of Deluxe Room :</label>
     <input class="form-control" type="number" name="delux"  placeholder=" Required no of rooms" [(ngModel)]="selected_delux_no" style="height:30px; margin-left:28px; margin-top:-7px; width: 150px; border-radius: 5px;" required>
-    <label for="econ" *ngIf=deluxe_selection_error style="margin-left:10px; color:red" > Required Rooms exceeds Available rooms </label> 
+    <label for="econ" *ngIf=deluxe_selection_error style="margin-left:10px; color:red" > Required Rooms exceeds Available rooms </label>
   </div>
 
     <div class="row" style="padding:20px;">
       <label for="econ">Enter no of Economical Room :</label>
-      <input class="form-control" type="number" name="econ"  placeholder=" Required no of rooms" [(ngModel)]="selected_econo_no" style="height:30px; margin-left:5px; margin-top:-7px; width: 150px; border-radius: 5px;" required>
+      <input class="form-control" type="number" name="econ"  placeholder=" Required no of rooms" [(ngModel)]="selected_econo_no" style="height:30px; margin-left:5px; margin-top:-15px; width: 150px; border-radius: 5px;" required>
       <label for="econ" *ngIf="economic_selection_error" style="margin-left:10px; color:red" > Required Rooms exceeds Available rooms </label>
     </div>
 
@@ -26,29 +61,33 @@
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
 
-      
+
     <mat-form-field class="example-full-width" style="margin-left:20px; width: 100px;">
       <input matInput [matDatepicker]="ll" [min]="checkIn" name="Checkout" placeholder="Check-Out" [(ngModel)]="checkout" >
       <mat-datepicker-toggle matSuffix [for]="ll"></mat-datepicker-toggle>
       <mat-datepicker touchUi #ll></mat-datepicker>
     </mat-form-field>
 
-    
+
   </div>
-  <button mat-raised-button type="submit" style="margin: 30px; width:800px; background-color:palegreen">Book</button>
+  <button *ngIf="!loading" class="btn btn-success" type="submit" style="margin-left: 30%; width: 40%; margin-top: 30px; margin-bottom: 10px;">Book</button>
+  <div *ngIf="loading" class="loader" style="margin-top: 5px;">Loading...</div>
+
+
   <div *ngIf= bookingSucces class="alert alert-success">
     <strong>Check Email</strong> Check confirmation email sent to the provided email.
-    <button mat-stroked-button onclick="document.getElementById('id01').style.display='block'" style="background-color:lightseagreen ; margin-left: 450px;" >Booking Recipt</button>
-
+    <button class="btn btn-outline-success" type="submit" onclick="document.getElementById('id01').style.display='block'" >Booking Recipt</button>
   </div>
+  <div *ngIf=!completeform class="alert alert-danger">
+    <strong>Error</strong> Please give provided information.
+  </div>
+
 </form>
-<label *ngIf=!completeform style="color:red;">Fill all data</label>
 
 <div style="padding:0px;">
-    <button mat-stroked-button color="primary" routerLink="/hotelList" >Back</button>
-    <button mat-stroked-button color="primary" routerLink="/" >Home</button>
-  </div>
- 
+    <button class="btn btn-secondary;" routerLink="/hotelList" >Back to hotels</button>
+</div>
+
 
 </div>
 
@@ -56,9 +95,9 @@
 
 
 <div id="id01" class="modal">
-  
+
   <form class="modal-content animate" action="/action_page.php" style="width: 624px;
-  margin-top: 236px;
+  margin-top: -16px;
   border-radius: 10px;">
   <div style="padding:15px">
     <h1 >BOOKING Recipt</h1>
@@ -82,9 +121,9 @@
 
 
   </div>
-    
-        
-     
+
+
+
     <div class="container" style="background-color:#f1f1f1">
       <button mat-stroked-button onclick="document.getElementById('id01').style.display='none'" style="color:red;" >Cancel</button>
     </div>

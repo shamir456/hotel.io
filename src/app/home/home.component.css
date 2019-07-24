@@ -3,16 +3,9 @@
 
 
 .welcome{
-    font-family: 'Pacifico', cursive;
-    font-size: 100px;
-    color: white;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 50px;
+    color: black;
     text-shadow: 2px 10px 7px rgba(0,0,0,0.3)
-    
-}
-button{
-    margin-left: 41%;
-    height: 45px;
-    width: 130px;
-    border-radius: 29px;
-    font-size: 25px;
+
 }
